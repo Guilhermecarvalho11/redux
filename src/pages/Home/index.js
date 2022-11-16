@@ -1,5 +1,7 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState} from 'react';
+import {MdFlightTakeoff} from 'react-icons/md'
 import api from '../../services/api';
+import './style.css'
 
 function Home() {
   const [trips, setTrips] = useState([]);
@@ -22,6 +24,16 @@ function Home() {
             <img src={trip.image} alt={trip.title} />
             <strong>{trip.title}</strong>
             <span>Status: {trip.status ? 'Disponivel' : 'Indisponivel'}</span>
+
+            <button type='button'
+            onClick={() => {}}>
+              <div>
+                <MdFlightTakeoff size={16} color='#FFF' />
+              </div>
+
+              <span>Solicitar Reserva</span>
+
+            </button>
           </li>
         ))}
 
