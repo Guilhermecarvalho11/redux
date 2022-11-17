@@ -1,7 +1,6 @@
 import produce from "immer";
 
 export default function reducer(state = [], action) {
-  console.log(action);
   switch (action.type) {
     case "ADD_RESERVE":
       return produce(state, (draft) => {
@@ -24,7 +23,20 @@ export default function reducer(state = [], action) {
                 draft.splice(tripIndex, 1)
             }
             
-        })
+        });
+
+        case 'UPDATE_RESERVE': {
+            if(action.amount <= 0){
+                return state;
+            }
+            return produce(state, draft => {
+                const tripIndex = draft.findIndex((trip) => trip.id === action.id);
+
+                if(tripIndex >= 0){
+                    draft[tripIndex].amount = Number(action.amount)
+                }
+            })
+        }
     default:
       return state;
   }
