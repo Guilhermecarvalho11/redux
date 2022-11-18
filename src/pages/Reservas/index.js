@@ -22,6 +22,7 @@ function Reservas() {
     dispatch(updateAmountReserve(trip.id, trip.amount + 1))
 
   }
+  
   return (
     <div>
       <h1 className="title">Você Solicitou {reserves.length}</h1>
